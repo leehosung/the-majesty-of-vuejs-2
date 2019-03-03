@@ -7,18 +7,43 @@
 </head>
 <body>
     <div class="container">
-        <h1>The multiplication table of 4.</h1>
+        <h1>Let's hear some stories!</h1>
         <ul class="list-group">
-            <li v-for="i in 11" class="list-group-item">
-                {{ i -1 }} times 4 equals {{ (i-1) * 4 }}
+            <li v-for="(story, index) in stories" class="list-group-item">
+                {{index}} {{ story.writer}} said "{{ story.plot }}"
             </li>
         </ul>
+        <pre>
+            {{ $data }}
+        </pre>
     </div>
 </body>
 <script src="https://unpkg.com/vue@2.6.8/dist/vue.js"></script>
 <script type="text/javascript">
     new Vue({
-        el: '.container'
+        el: '.container',
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Alex"
+                },
+                {
+                    plot: "Yesterday, someone stole by bag!",
+                    writer: "John"
+                },
+                {
+                    plot: "Someone ate my chocolate...",
+                    writer: "John"
+                },
+                {
+                    plot: "I ate someone's chocolate!",
+                    writer: "Alex"
+                }
+
+
+            ]
+        }
     })
 </script>
 </html>
