@@ -9,8 +9,8 @@
     <div class="container">
         <h1>Let's hear some stories!</h1>
         <ul class="list-group">
-            <li v-for="(story, index) in stories" class="list-group-item">
-                {{index}} {{ story.writer}} said "{{ story.plot }}"
+            <li v-for="(value, key, index) in story" class="list-group-item">
+                {{ index }} : {{ key }} : {{ value }}
             </li>
         </ul>
         <pre>
@@ -23,26 +23,11 @@
     new Vue({
         el: '.container',
         data: {
-            stories: [
-                {
-                    plot: "I crashed my car today!",
-                    writer: "Alex"
-                },
-                {
-                    plot: "Yesterday, someone stole by bag!",
-                    writer: "John"
-                },
-                {
-                    plot: "Someone ate my chocolate...",
-                    writer: "John"
-                },
-                {
-                    plot: "I ate someone's chocolate!",
-                    writer: "Alex"
-                }
-
-
-            ]
+            story: {
+                plot: "I crashed my car today!",
+                writer: "Alex",
+                upvodes: 47
+            },
         }
     })
 </script>
