@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Upvote</title>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-primary btn-lg btn-block" @click="upvote">
+            Upvote! {{ upvotes }}
+        </button>
+        <pre>{{ $data }}</pre>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@2.6.8/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            upvotes: 0
+        },
+        methods: {
+            upvote: function() {
+                this.upvotes++;
+            }
+        }
+    })
+</script>
+</html>
