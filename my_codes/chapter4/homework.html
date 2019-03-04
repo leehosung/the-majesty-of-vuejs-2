@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>This is me!</title>
+</head>
+<body>
+    <div class="container">
+        <h1>This is me!</h1>
+        <ul class="list-group">
+            <li v-for="(value, key, index) in profile" class="list-group-item">
+                {{ index }}: {{ key }} = {{ value}}
+            </li>
+        </ul>
+        <pre>
+            {{ $data }}
+        </pre>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@2.6.8/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            profile: {
+                name: 'Kostas',
+                height: '1.73m',
+                weigh: '65kg',
+                eyeColor: 'brown',
+                favoriteFood: 'Ntolmas'
+            },
+        }
+    })
+</script>
+</html>
