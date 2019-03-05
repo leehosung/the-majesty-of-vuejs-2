@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>The Elections</title>
+</head>
+<body>
+<div class="container">
+    <h1>People of Vue</h1>
+    <ul class="list-group">
+        <li v-for="candidate in candidates" class="list-group-item">
+            {{ candidate.name }} {{ candidate.votes }}
+            <span>
+                <button @click="candidate.votes++">Vote</button>
+            </span>
+        </li>
+    </ul>
+    <button @click="clear">
+        press 'delete' to reset
+    </button>
+    <h2>Our mayor is Mr {{ mayorName }}</h2>
+    <pre>{{ $data }}</pre>
+</div>
+</body>
+<script src="https://unpkg.com/vue@2.6.8/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            candidates: [
+                {
+                    name: 'Black',
+                    votes: 146
+                },
+                {
+                    name: 'Pink',
+                    votes: 145
+                },
+                {
+                    name: 'White',
+                    votes: 135
+                },
+                {
+                    name: 'Brown',
+                    votes: 130
+                }
+            ]
+        },
+        computed: {
+            mayorName: function(){
+                // return this.candidates[0].name
+                var candidatesSorted = this.candidates.sort(function (a, b) {
+                    return b.votes - a.votes;
+                });
+                return candidatesSorted[0].name;
+            }
+        },
+        methods: {
+            clear: function() {
+                this.candidates = this.candidates.map(
+                    function(candidate){
+                        candidate.votes = 0;
+                        return candidate;
+                    }
+                )
+            }
+        }
+    })
+</script>
+</html>
