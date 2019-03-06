@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>User Stories</title>
+</head>
+<body>
+<div class="container">
+    <h1>Let's hear some stories!</h1>
+    <h3>Alex's stories</h3>
+    <ul class="list-group">
+        <li v-for="story in storiesBy('Alex')" class="list-group-item">
+            {{ story.writer }} said "{{ story.plot }}
+        </li>
+    </ul>
+    <h3>John's stories</h3>
+    <ul class="list-group">
+        <li v-for="story in storiesBy('John')" class="list-group-item">
+            {{ story.writer }} said "{{ story.plot }}
+        </li>
+    </ul>
+    <pre>{{ $data }}</pre>
+</div>
+</body>
+<script src="https://unpkg.com/vue@2.6.8/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Alex",
+                    upvote: 28
+                },
+                {
+                    plot: "Yesterday, someone stole my bag!",
+                    writer: "John",
+                    upvote: 8
+                },
+                {
+                    plot: "Someone ate my chocolate...",
+                    writer: "John",
+                    upvote: 51
+                },
+                {
+                    plot: "I ate someone's chocolate!",
+                    writer: "Alex",
+                    upvote: 74
+                },
+            ]
+        },
+        computed: {
+        },
+        methods: {
+            storiesBy: function(writer) {
+                return this.stories.filter(function (story) {
+                    return story.writer === writer
+                })
+            },
+        }
+    })
+</script>
+</html>
