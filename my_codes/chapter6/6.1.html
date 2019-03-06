@@ -8,16 +8,16 @@
 <body>
 <div class="container">
     <h1>Let's hear some stories!</h1>
-    <h3>Alex's stories</h3>
+    <div class="form-group">
+        <label for="query">
+            What are you looking for?
+        </label>
+        <input v-model="query" class="form-control">
+    </div>
+    <h3>Search results:</h3>
     <ul class="list-group">
-        <li v-for="story in storiesBy('Alex')" class="list-group-item">
-            {{ story.writer }} said "{{ story.plot }}
-        </li>
-    </ul>
-    <h3>John's stories</h3>
-    <ul class="list-group">
-        <li v-for="story in storiesBy('John')" class="list-group-item">
-            {{ story.writer }} said "{{ story.plot }}
+        <li v-for="story in search" class="list-group-item">
+            {{ story.writer }} said "{{ story.plot }}"
         </li>
     </ul>
     <pre>{{ $data }}</pre>
@@ -49,9 +49,21 @@
                     writer: "Alex",
                     upvote: 74
                 },
-            ]
+            ],
+            query: ''
         },
         computed: {
+            famous: function() {
+                return this.stories.filter(function (story) {
+                    return story.upvote >= 25
+                })
+            },
+            search: function() {
+                var query = this.query
+                return this.stories.filter(function (story) {
+                    return story.plot.includes(query)
+                })
+            }
         },
         methods: {
             storiesBy: function(writer) {
